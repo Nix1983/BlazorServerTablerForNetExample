@@ -1,4 +1,3 @@
-[![CodeQL](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql)
 ![NuGet](https://img.shields.io/nuget/v/TablerForNet.svg)
 ![TablerForNet Repo](https://img.shields.io/badge/TablerForNet-Repo-brightgreen?style=flat&logo=github)
 
