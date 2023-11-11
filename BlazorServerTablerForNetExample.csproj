@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TablerForNet" Version="1.0.11" />
+  </ItemGroup>
+
 </Project>
