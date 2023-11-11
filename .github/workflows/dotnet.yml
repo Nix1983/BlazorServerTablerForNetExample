@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +25,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
   codeql-analysis:
+    needs: build
     runs-on: ubuntu-latest
 
     strategy:
