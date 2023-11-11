@@ -1,0 +1,52 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
+  codeql-analysis:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [csharp, javascript, html]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+
+    - name: Autobuild
+      run: codeql database create --language=${{ matrix.language }} --source-root . --output=${{ matrix.language }}.db
+
+    - name: Perform CodeQL Analysis
+      run: codeql analyze --language=${{ matrix.language }} --output=results/${{ matrix.language }}.sarif
+
+    - name: Upload CodeQL results
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: results/${{ matrix.language }}.sarif
