@@ -1,0 +1,27 @@
+name: Update NuGet Package
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Täglich um Mitternacht, du kannst dies anpassen
+
+jobs:
+  update-nuget:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x  # Aktualisiere dies auf die gewünschte .NET-Version
+
+    - name: Update NuGet Package
+      run: dotnet outdated -u
+
+    - name: Debug Info
+      run: |
+        echo "GitHub Token: $GITHUB_TOKEN"
+        echo "Current Directory: $(pwd)"
+        echo "List Files: $(ls -a)"
