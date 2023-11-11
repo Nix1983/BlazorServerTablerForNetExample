@@ -1,0 +1,32 @@
+name: CodeQL
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [csharp, javascript, html  
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+
+    - name: Autobuild
+      run: codeql database create --language=${{ matrix.language }} --source-root . --output=${{ matrix.language }}.db
+
+    - name: Perform CodeQL Analysis
+      run: codeql analyze --language=${{ matrix.language }} --output=results/${{ matrix.language }}.sarif
+
+    - name: Upload CodeQL results
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: results/${{ matrix.language }}.sarif
