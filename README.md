@@ -17,7 +17,7 @@
 - Focuses on SEO optimization to ensure better search engine visibility.
 - Simplifies the process of creating responsive web applications.
   
-![TablerForNet SEO Example](https://github.com/Nix1983/TablerForNet/blob/master/GoogleSeo.png)
+![TablerForNet SEO Example](https://github.com/Nix1983/TablerForNet/blob/master/src/assets/GoogleSeo.png)
 
 [More information](https://ghostlyInc.com/en-US/tabler-for-net-and-balzor-usage/)
   
