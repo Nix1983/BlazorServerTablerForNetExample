@@ -1,0 +1,21 @@
+﻿
+<HeadContent>
+    <title>@(Title ?? "GhostlyInc.com")</title>
+    <meta name="description" content=@(Description ?? "Blazor SEO Tutorial by www.ghostlyInc.com") />
+    <meta name="keywords" content=@Keywords />
+
+</HeadContent>
+
+
+@code {
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public string? Description { get; set; }
+
+    [Parameter]
+    public string? Keywords { get; set; } = "TablerForNet best SEO framework for blazor";
+
+}

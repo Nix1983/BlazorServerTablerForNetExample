@@ -1,4 +1,5 @@
 using BlazorServerTablerForNetExample.Data;
+using Microsoft.AspNetCore.ResponseCompression;
 using TablerForNet;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +11,30 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddTablerForNet();
 
+//Enable is a security risk but website is much faster
+//Risk is when using cookies
+//https://en.wikipedia.org/wiki/CRIME
+builder.Services.AddResponseCompression(o =>
+{
+    o.EnableForHttps = true;
+    o.Providers.Add<BrotliCompressionProvider>();
+    o.Providers.Add<GzipCompressionProvider>();
+    o.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
+{
+    "image/svg+xml",
+    "text/xml",
+    "text/css",
+    "application/json",
+    "text/javascript"
+});
+
+});
+
+
 var app = builder.Build();
 
+//must call at first
+app.UseResponseCompression();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
