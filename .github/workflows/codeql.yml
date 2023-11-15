@@ -52,11 +52,11 @@ jobs:
       with:
         version: '8.0.0'
 
-    # Build project
+    # Build project for CodeQL
     - name: Build project
       run: |
         # Add your custom build steps here
-        dotnet build ./BlazorServerTablerForNetExample.csproj
+        ./build-for-codeql.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
