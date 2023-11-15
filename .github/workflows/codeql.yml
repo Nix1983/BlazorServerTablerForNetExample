@@ -50,7 +50,7 @@ jobs:
     - name: Build project
       run: |
         # Add your custom build steps here
-        dotnet build ./MyProject.csproj
+        dotnet build ./BlazorServerTablerForNetExample.csproj
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
