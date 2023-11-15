@@ -46,17 +46,17 @@ jobs:
         # Specify that the .NET 8 SDK should be used
         csharp-version: '8.0'
 
-    # Build project
-    - name: Build project
-      run: |
-        # Add your custom build steps here
-        dotnet build ./BlazorServerTablerForNetExample.csproj
-
     # Install .NET 8 SDK
     - name: Setup .NET 8 SDK
       uses: actions/setup-dotnet@v2
       with:
         version: '8.0.0'
+
+    # Build project
+    - name: Build project
+      run: |
+        # Add your custom build steps here
+        dotnet build ./BlazorServerTablerForNetExample.csproj
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
