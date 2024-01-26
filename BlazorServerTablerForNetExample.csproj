@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TablerForNet" Version="1.0.42" />
+    <PackageReference Include="TablerForNet" Version="1.0.71" />
   </ItemGroup>
 
 </Project>
