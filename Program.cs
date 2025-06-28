@@ -11,19 +11,10 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddTablerForNet();
 
-// Configuration binding
-builder.Services.Configure<ResponseCompressionOptions>(
-    builder.Configuration.GetSection("ResponseCompression"));
-//Enable is a security risk but website is much faster
-//Risk is when using cookies
-//https://en.wikipedia.org/wiki/CRIME
-builder.Services.AddResponseCompression();
 
 
 var app = builder.Build();
 
-//must call at first
-app.UseResponseCompression();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
