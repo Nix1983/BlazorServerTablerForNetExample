@@ -9,5 +9,11 @@
   <ItemGroup>
     <PackageReference Include="TablerForNet" Version="1.0.71" />
   </ItemGroup>
+  <ItemGroup>
+  <None Update="appsettings.Production.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
+
 
 </Project>
