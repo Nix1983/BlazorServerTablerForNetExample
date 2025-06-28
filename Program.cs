@@ -14,21 +14,7 @@ builder.Services.AddTablerForNet();
 //Enable is a security risk but website is much faster
 //Risk is when using cookies
 //https://en.wikipedia.org/wiki/CRIME
-builder.Services.AddResponseCompression(o =>
-{
-    o.EnableForHttps = true;
-    o.Providers.Add<BrotliCompressionProvider>();
-    o.Providers.Add<GzipCompressionProvider>();
-    o.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
-{
-    "image/svg+xml",
-    "text/xml",
-    "text/css",
-    "application/json",
-    "text/javascript"
-});
-
-});
+builder.Services.AddResponseCompression();
 
 
 var app = builder.Build();
